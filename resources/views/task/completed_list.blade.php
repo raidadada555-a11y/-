@@ -15,6 +15,7 @@
                 <th>期限</th>
                 <th>重要度</th>
                 <th>詳細</th>
+                <th>タスク終了日</th>
             </tr>
         </thead>
         <tbody>
@@ -22,8 +23,9 @@
             <tr>
                 <td>{{ $task->name }}</td>
                 <td>{{ $task->period }}</td>
-                <td>{{ $task->priority }}</td>
+                <td>{{ $task->getPriorityString() }}</td>
                 <td>{{ $task->detail }}</td>
+                <td>{{ $task->created_at }}</td>
             </tr>
             @endforeach
         </tbody>
