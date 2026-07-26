@@ -41,7 +41,7 @@
         <tr>
             <td>{{ $task->name }}</td>
             <td>{{ $task->period }}</td>
-            <td>{{ $task->priority }}</td>
+            <td>{{ $task->getPriorityString() }}</td>
             <td>
                 <a href="{{ route('detail', ['task_id' => $task->id]) }}">詳細閲覧</a>
             </td>
