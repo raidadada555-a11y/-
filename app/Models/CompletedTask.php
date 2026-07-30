@@ -2,17 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
-
-class CompletedTask extends Model
+class CompletedTask extends Task
 {
     protected $table = 'completed_tasks';
 
-    protected $fillable = [
-        'user_id',
-        'name',
-        'period',
-        'detail',
-        'priority',
-    ];
+    protected $guarded = [];
 }
