@@ -10,7 +10,7 @@ class LoginController extends Controller
     public function login(Request $request)
     {
         $datum = $request->validate([
-            'email' => ['required', 'email'],
+            'login_id' => ['required'],
             'password' => ['required'],
         ]);
 
@@ -18,7 +18,7 @@ class LoginController extends Controller
             return back()
                 ->withInput()
                 ->withErrors([
-                    'auth' => 'emailかパスワードに誤りがあります。',
+                    'auth' => 'ログインIDかパスワードに誤りがあります。',
                 ]);
         }
 

@@ -7,7 +7,6 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\LoginController; 
 use App\Http\Controllers\Admin\AuthController as AdminAuthController;
 use App\Http\Controllers\Admin\HomeController as AdminHomeController;
-use App\Http\Controllers\Admin\UserController as AdminUserController;
 
 // トップページ（ログイン判定）
 Route::get('/', function () {
@@ -41,13 +40,10 @@ Route::middleware(['auth'])->group(function () {
 });
 
 // 管理画面
-Route::prefix('/admin')->group(function () {
-    Route::get('', [AdminAuthController::class, 'index'])->name('admin.index');
-    Route::post('/login', [AdminAuthController::class, 'login'])->name('admin.login');
-    
-    Route::middleware(['auth:admin'])->group(function () {
-        Route::get('/top', [AdminHomeController::class, 'top'])->name('admin.top');
-        Route::get('/user/list', [AdminUserController::class, 'list'])->name('admin.user.list');
-        Route::get('/logout', [AdminAuthController::class, 'logout']);
-    });
+Route::get('/admin', [AdminAuthController::class, 'index'])->name('admin.index');
+Route::post('/admin/login', [AdminAuthController::class, 'login'])->name('admin.login');
+
+Route::prefix('/admin')->middleware(['auth:admin'])->group(function () {
+    Route::get('/top', [AdminHomeController::class, 'top'])->name('admin.top');
+    Route::get('/logout', [AdminAuthController::class, 'logout']);
 });
