@@ -17,11 +17,10 @@
         </div>
     @endif
 
-    <!-- 送信先URLをブレないように固定しました -->
     <form action="/user/register" method="post">
         @csrf
         名前：<input type="text" name="name" value="{{ old('name') }}"><br><br>
-        メールアドレス：<input type="email" name="email" value="{{ old('email') }}"><br><br>
+        ログインID：<input type="text" name="login_id" value="{{ old('login_id') }}"><br><br>
         パスワード：<input type="password" name="password"><br><br>
         <button type="submit">登録する</button>
     </form>

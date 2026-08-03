@@ -2,10 +2,10 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
-    <title>タスク管理 アプリケーション</title>
+    <title>管理画面 ログイン</title>
 </head>
 <body>
-    <h1>ログイン</h1>
+    <h1>管理画面 ログイン</h1>
 
     @if ($errors->any())
         <div>
@@ -15,17 +15,11 @@
         </div>
     @endif
 
-    @if (session('front.user_register_success') == true)
-        ユーザを登録しました！！<br>
-    @endif
-
     <form action="/login" method="post">
         @csrf
-        email：<input name="email" value="{{ old('email') }}"><br>
+        ログインID：<input name="login_id" value="{{ old('login_id') }}"><br>
         パスワード：<input name="password" type="password"><br>
         <button>ログインする</button>
     </form>
-
-    <a href="/user/register">会員登録</a>
 </body>
 </html>
